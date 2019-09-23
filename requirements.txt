@@ -1,0 +1,26 @@
+# Basic
+numpy==1.17.2
+pandas==0.24.2
+jupyter==1.0.0
+
+# Config
+configparser==4.0.2
+
+# HTTP
+requests==2.22.0
+
+# Google Cloud
+google-cloud-storage==1.19.1
+
+# Encryption
+cryptography==2.3
+
+# Scheduler
+schedule==0.6.0
+
+# SMTP client
+yagmail==0.11.220
+
+# ODBC
+pyodbc==4.0.27
+psycopg2==2.7.3.2
