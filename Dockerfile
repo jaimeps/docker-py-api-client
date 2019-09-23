@@ -15,6 +15,9 @@ RUN apt-get update -qq \
         python3-dev  \
         python3-pip  \
         python3-setuptools  \
+        python3-wheel  \
+        python3-tk \
+        python3-numpy \
         libopenblas-base  \
         cython3  \
         unixodbc  \
