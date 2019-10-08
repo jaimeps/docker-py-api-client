@@ -4,29 +4,12 @@ FROM ubuntu:18.04
 ENV DEBIAN_FRONTEND noninteractive
 
 # Ubuntu packages and Python pre-requirements
+COPY requirements_1.txt requirements_2.txt /tmp/
 RUN apt-get update -qq \
-     && apt-get install -y --no-install-recommends \
-        build-essential \
-        g++  \
-        git  \
-        curl  \
-        apt-utils \
-        python3  \
-        python3-dev  \
-        python3-pip  \
-        python3-setuptools  \
-        python3-wheel  \
-        python3-tk \
-        python3-numpy \
-        libopenblas-base  \
-        cython3  \
-        unixodbc  \
-        unixodbc-dev\
-        vim
+    && xargs -a /tmp/requirements_1.txt apt-get install -y --no-install-recommends
 
 # Python packages
-COPY requirements.txt /tmp/
-RUN python3 -m pip install -r /tmp/requirements.txt
+RUN python3 -m pip install -r /tmp/requirements_2.txt
 
 # Download Google Cloud SDK
 RUN curl https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz > /tmp/google-cloud-sdk.tar.gz
@@ -38,6 +21,10 @@ RUN mkdir -p /usr/local/gcloud \
 
 # Adding gcloud path to local
 ENV PATH $PATH:/usr/local/gcloud/google-cloud-sdk/bin
+
+# Cloud SQL proxy
+RUN wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O cloud_sql_proxy 
+RUN chmod +x cloud_sql_proxy
 
 # Clean
 RUN  apt-get clean \

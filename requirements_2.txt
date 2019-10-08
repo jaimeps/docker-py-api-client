@@ -1,5 +1,4 @@
 # Basic
-numpy==1.17.2
 pandas==0.24.2
 jupyter==1.0.0
 
@@ -11,6 +10,7 @@ requests==2.22.0
 
 # Google Cloud
 google-cloud-storage==1.19.1
+google-api-python-client==1.7.11
 
 # Encryption
 cryptography==2.3
